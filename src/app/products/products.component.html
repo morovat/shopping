@@ -1,0 +1,65 @@
+<div class="dashboard">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 titleHeader mb-3">
+    <h2 class="pl-2 pt-4 page-wrapper"><i class="fa fa-product-hunt"></i> {{'PRODUCTS' | translate}} </h2>
+    </div>
+    <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-4">
+      <div class="titleHeaderBox">
+        <ul class="nav nav-pills mb-4">
+          <li class="mr-lg-4 mr-sm-2 mr-xl-2"><a class="btn mybtn btn-add" [routerLink]="['/product']"> <i class="fa fa-plus" aria-hidden="true"></i>
+            <span class="inline-txt d-none d-sm-inline-block d-md-inline-block pl-1"> {{'ADD' | translate}} </span></a>
+          </li>
+<!--          <li class="mr-lg-4 mr-sm-2 mr-xl-2"><a class="btn mybtn btn-edit" [routerLink]="['/product',selectedCheckbox]">-->
+<!--            <i class="fa fa-edit"></i>-->
+<!--            <span class="inline-txt d-none d-sm-inline-block d-md-inline-block pl-1"> ویرایش </span>-->
+<!--          </a></li>-->
+<!--          <li><button class="btn mybtn btn-delete" (click)="remove(selectedCheckbox)"> <i class="fa fa-trash" aria-hidden="true"></i>-->
+<!--            <span class="inline-txt d-none d-sm-inline-block d-md-inline-block pl-1"> حذف </span>-->
+<!--          </button></li>-->
+        </ul>
+    </div>
+      <div class="table-responsive">
+    <table class="table">
+      <tr class="thead">
+        <th>{{'PHOTO' | translate}}</th>
+        <th (click)="sorting('title')">{{'TITLE' | translate}} <i class="fa fa-sort"></i></th>
+        <th>{{'DESCRIPTION' | translate}}</th>
+        <th (click)="sorting('price')">{{'PRICE' | translate}}  <i class="fa fa-sort"></i></th>
+        <th (click)="sorting('cat')">{{'CATEGORES' | translate}} <i class="fa fa-sort"></i></th>
+        <th (click)="sorting('date')">{{'DATE' | translate}} <i class="fa fa-sort"></i></th>
+        <th>{{'EVENT' | translate}}</th>
+      </tr>
+      <tr *ngFor="let item of products | sort:sortBy" >
+        <td [routerLink]="['/product',item.id]" class="hasLink"><img *ngIf="item.photo" class="small-png" src="{{item.photo}}" alt=""><img *ngIf="!item.photo" class="small-png" src="../assets/images/default.jpg" alt=""></td>
+        <td [routerLink]="['/product',item.id]" class="hasLink">{{item.title}}</td>
+        <td>{{item.des}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.cat}}</td>
+        <td theme="dp-material" dir="rtl" mode="day">{{item.date}}</td>
+        <td class="eventsTd">
+          <ul class="nav nav-pills">
+            <li>
+              <a class="small-btn btn-edit" [routerLink]="['/product',selectedCheckbox]">
+                <i class="fa fa-edit"></i>
+              </a>
+            </li>
+            <li>
+              <button class="small-btn btn-delete " (click)="remove(item.id)"> <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </li>
+          </ul>
+        </td>
+      </tr>
+    </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="loadingpage" *ngIf="loading" class="alert alert-info" ng-show="loading" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.5);z-index: 9999999;">
+  <div style="display: block; width: 100%; height: 30%; margin-top: 20%;">
+    <div style="margin: 0 auto; width: 33%;">
+      <img src="../assets/images/BFtq-(2).gif" style="width: 75px; height: 75px; clear: both; margin: 0px 35%;">
+    </div>
+  </div>
+</div>

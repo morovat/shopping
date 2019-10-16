@@ -1,0 +1,81 @@
+<div class="dashboard ">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 titleHeader mb-3">
+      <h2 class="pl-2 pt-4 page-wrapper" *ngIf="idf"> <i class="fa fa-edit"></i>{{'EDIT_PRODUCT' | translate}}</h2>
+      <h2 class="pl-2 pt-4 page-wrapper" *ngIf="!idf"> <i class="fa fa-plus"></i> {{'ADD_NEW_PRODUCT' | translate}} </h2>
+    </div>
+    <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-5 singlePageProduct mb-4 d-flex">
+    <form class="w-100" *ngFor="let item of products | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+      <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 col-box ">
+        <input type="hidden" ngModel="{{item.id}}" name="id" >
+        <div class="img singlePageImg img-thumbnail m-xl-auto m-sm-auto">
+          <div id="catImg">
+            <img  src="{{item.photo}}" class="img-responsive" *ngIf="idf"><img  src="../assets/images/default.jpg" class="img-responsive" *ngIf="!idf"> <input type="hidden" ngModel="{{item.photo}}">
+          </div>
+          <div class="upload-btn-wrapper">
+            <button class="uploadBtn"> <i class="fa fa-edit"></i></button>
+            <input (change)="upload($event)" required id="file-input-x" class="file-input visually-hidden" type="file" name="photo"
+                   data-id="x" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 col-box pr-xl-0">
+        <div class="wrap-input100 validate-input mt-4 col-md-6 col-sm-6 col-xs-6 col-lg-6 custombox-col6">
+          <input class="input100 custombox" ngModel="{{item.title}}" id="title"  type="text" name="title" placeholder="{{'TITLE' | translate}}">
+        </div>
+          <div class="wrap-input100 validate-input mt-4 col-lg-6 col-md-6 col-sm-6 col-xs-6 custombox-col6">
+            <input class="input100 custombox pull-left"  id="price" type="text" name="price" placeholder="{{'COUNT' | translate}}" ngModel="{{item.price}}">
+          </div>
+        <div class="mt-4 wrap-input100 col-md-6 col-sm-6 col-xs-6 col-lg-6 mb-4 custombox-col6">
+          <ng-select2
+            [(ngModel)]="item.cat"
+            [data]="cat"
+            [placeholder]="'Please select a fruit...'"
+            [width]="220"
+            [options]="cat"
+            class="pro-select2-cat"
+          >
+          </ng-select2>
+<!--          <select class="custombox" name="cat" ngModel id="cat" ngModel="{{item.cat}}">-->
+<!--            <option value="" disabled selected="" >{{'CATEGORES' | translate}}</option>-->
+<!--            <option value="اسکرابر">اسکرابر</option>-->
+<!--            <option value="واترجت">واترجت</option>-->
+<!--          </select>-->
+        </div>
+        <div class="wrap-input100 mt-4 col-md-6 col-sm-6 col-xs-6 col-lg-6 mb-4 pro-date-piker child-left custombox-col6 responsive-date">
+          <dp-date-picker
+            dir="rtl"
+            mode="day"
+            placeholder="{{'DATE' | translate}}"
+            ngModel="{{item.date| jalali }}"
+            name="date"
+            theme="dp-material"
+            class="custombox w-100">
+          </dp-date-picker>
+        </div>
+
+      <div class="wrap-input100 validate-input mt-4 col-12 ">
+        <textarea class="form-control" id="exampleFormControlTextarea4" id="des" name="des" rows="3" ngModel="{{item.des}}"></textarea>
+      </div>
+<!--      <div class="form-group mt-4">-->
+<!--        <input type="file" name="image" ngModel="{{item.image}}" />-->
+<!--      </div>-->
+      <div class="wrap-input100 validate-input mt-4 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <button class="login100-form-btn mybtn submitbtn btn-add custombox pull-left">
+          {{'SUBMIT' | translate}}
+        </button>
+      </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+<div id="loadingpage" *ngIf="loading" class="alert alert-info" ng-show="loading" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.5);z-index: 9999999;">
+  <div style="display: block; width: 100%; height: 30%; margin-top: 20%;">
+    <div style="margin: 0 auto; width: 33%;">
+      <img src="../assets/images/BFtq-(2).gif" style="width: 75px; height: 75px; clear: both; margin: 0px 35%;">
+    </div>
+  </div>
+</div>

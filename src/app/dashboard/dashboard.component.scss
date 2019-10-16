@@ -1,0 +1,15 @@
+.dashboard table{
+  width: 100%;
+  border: none;
+}
+td,th{
+  padding: 10px;
+}
+.rtl td,.rtl th{
+  text-align: right;
+}
+.ltr td,.ltr th{
+  text-align: left;
+}
+@media(max-width: 768px){
+}

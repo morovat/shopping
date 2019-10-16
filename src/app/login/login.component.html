@@ -1,0 +1,43 @@
+<div class="col-md-12 col-sm-12 login-page">
+  <div class="container">
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login p-lg-4 mr-auto ml-auto mt-lg-5 text-center">
+          فرم لاگین
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="wrap-input100 validate-input mt-4 col-sm-10 m-auto float-none" data-validate = "Valid email is required: ex@abc.xyz">
+              <input class="input100 mb-4 mt-4"  ngModel required id="email" type="text" name="email" placeholder="ایمیل">
+              <span class="focus-input100-1"></span>
+              <span class="focus-input100-2"></span>
+            </div>
+<!--            <span class="help-block" *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched">-->
+<!--            لطفا ایمیل خود را وارد کنید.-->
+<!--        </span>-->
+            <div class="wrap-input100 rs1 validate-input mt-4 col-sm-10 m-auto float-none" data-validate="Password is required">
+              <input class="input100 mb-4" autocomplete="false" type="password" ngModel required id="pass" name="pass" placeholder="رمز عبور">
+              <span class="focus-input100-1"></span>
+              <span class="focus-input100-2"></span>
+            </div>
+<!--            <span class="help-block" *ngIf="!loginForm.get('pass').valid && loginForm.get('pass').touched">-->
+<!--            لطفا رمز عبور خود را وارد کنید.-->
+<!--        </span>-->
+            <div class="container-login100-form-btn mt-4 col-sm-10 m-auto float-none">
+              <button class="login100-form-btn mb-4 border-0">
+                ورود
+              </button>
+            </div>
+            <span class="help-block">{{message}}</span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--....loading...-->
+<div id="loadingpage" *ngIf="loading" class="alert alert-info" ng-show="loading" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.5);z-index: 9999999;">
+  <div style="display: block; width: 100%; height: 30%; margin-top: 20%;">
+    <div style="margin: 0 auto; width: 33%;">
+      <img src="../assets/images/BFtq-(2).gif" style="width: 75px; height: 75px; clear: both; margin: 0px 35%;">
+    </div>
+  </div>
+</div>

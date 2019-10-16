@@ -1,0 +1,13 @@
+.order-form{
+  width: 50%;
+  margin: auto;
+  box-shadow: 0px 0px 25px 2px #ddd;
+  padding: 20px;
+}
+select{
+  border: 1px solid #dddddd !important;
+  padding-top: 5px;
+}
+select option:first-child{
+  color: #777777 !important;
+}

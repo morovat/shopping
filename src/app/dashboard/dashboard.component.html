@@ -1,0 +1,51 @@
+<div class="dashboard">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="col-xs-12 col-sm-12 col-md-12 titleHeader mb-3">
+    <h2 class="pl-2 pt-4 page-wrapper"><i class="fa fa-dashboard fa-fw"></i> {{'DASHBOARD'| translate}} </h2>
+    </div>
+    <div class="col-md-5 col-sm-12 col-xs-12 col-box">
+      <div class="col-12 tabelparent pr-sm-2 p-lg-0 p-md-0">
+        <div class="titleHeaderBox pt-3 pb-3 pl-md-2 pl-lg-2 pl-sm-2 pr-xs-2"><h6 class="mt-4">3 {{'LAST_ORDER'| translate}}</h6></div>
+        <table>
+          <tr>
+            <th> {{'CUSTOMER'| translate}}</th>
+            <th>{{'STATUSE_ORDER'| translate}}</th>
+            <th>{{'TOTAL_ORDERS'| translate}}</th>
+          </tr>
+          <tr *ngFor="let item of orders">
+            <td>{{item.customer}}</td>
+            <td>{{item.statuse}}</td>
+            <td>{{item.total}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="col-md-7 col-sm-12 col-xs-12 col-box">
+      <div class="col-12  tabelparent pr-sm-2 p-lg-0 p-md-0">
+        <div class="titleHeaderBox pt-3 pb-3 pl-md-2 pl-lg-2 pl-sm-2 pr-xs-2"><h6 class="mt-4">{{'BUY_THIS_MONTH' | translate}}</h6></div>
+      <table>
+        <tr>
+          <th>{{'NET_SALE_THIS_MONTH' | translate}}</th>
+          <th>{{'REGISTRED_ORDER' | translate}}</th>
+          <th>{{'RETURN_OF_ORDER' | translate}}</th>
+          <th>{{'ITEMS_PURCHASED' | translate}}</th>
+        </tr>
+        <tr *ngFor="let item of reports">
+          <td>{{item.sales}}  <span>{{'TOMAN' | translate}}</span></td>
+          <td>{{item.Registered}}  <span>{{'TOMAN' | translate}}</span></td>
+          <td>{{item.Return}}  <span>{{'TOMAN' | translate}}</span></td>
+          <td>{{item.Items}}  <span>{{'TOMAN' | translate}}</span></td>
+        </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--....loading...-->
+<div id="loadingpage" *ngIf="loading" class="alert alert-info" ng-show="loading" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.5);z-index: 9999999;">
+  <div style="display: block; width: 100%; height: 30%; margin-top: 20%;">
+    <div style="margin: 0 auto; width: 33%;">
+      <img src="../assets/images/BFtq-(2).gif" style="width: 75px; height: 75px; clear: both; margin: 0px 35%;">
+    </div>
+  </div>
+</div>
