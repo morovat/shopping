@@ -24,9 +24,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-v4-rtl/dist/css/bootstrap-rtl.min.css",
+              "node_modules/font-awesome/css/font-awesome.css",
+              "node_modules/select2/dist/css/select2.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/main.js",
+              "node_modules/select2/dist/js/select2.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -120,6 +129,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "shopping"
+    }
+  },
+  "defaultProject": "shopping",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
