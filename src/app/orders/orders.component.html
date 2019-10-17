@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12 titleHeader mb-3">
     <h2 class="pl-2 pt-4 page-wrapper"><i class="fa fa-first-order"></i> {{'ORDER_LIST' | translate}} </h2>
     </div>
-    <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-4">
+    <div class="tabelparent col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-4 pb-4">
       <div class="titleHeaderBox border-bottom-0">
         <ul class="nav nav-pills mb-4">
           <li class="mr-lg-4 mr-sm-2 mr-xl-2"><a class="btn mybtn btn-add" [routerLink]="['/order']"> <i class="fa fa-plus" aria-hidden="true"></i>
@@ -16,41 +16,44 @@
 <!--            <span class="inline-txt d-none d-sm-inline-block d-md-inline-block pl-1"> حذف </span>-->
 <!--          </button></li>-->
         </ul>
+        <div class="search-hero col-6 col-xs-12 pb-2 pr-0 pl-0">
+          <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  {{'PLACEHOLDER_SEARCH_HEADING_TITLE' | translate}}">
+        </div>
       </div>
       <div class="table-responsive">
         <table class="table mt-4">
       <tr class="thead">
-        <th (click)="sorting('faktor')">{{'INVOICE_NUMBER' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('faktor')">{{'INVOICE_NUMBER' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('customer')">{{'CUSTOMER' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('customer')">{{'CUSTOMER' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('paymentMethod')">{{'PAYMENT_METHOD' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('paymentMethod')">{{'PAYMENT_METHOD' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('createDate')">{{'DATE' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('createDate')">{{'DATE' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('finalChange')">{{'LASTE_CHANGE' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('finalChange')">{{'LASTE_CHANGE' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('statuse')">{{'STATUSE_ORDER' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('statuse')">{{'STATUSE_ORDER' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('total')">{{'TOTAL_ORDERS' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('total')">{{'TOTAL_ORDERS' | translate}} <i class="fa fa-sort"></i>
         </th>
-        <th (click)="sorting('finalDate')">{{'COMPLLATION_DATE' | translate}}<i class="fa fa-sort"></i>
+        <th (click)="sorting('finalDate')">{{'COMPLLATION_DATE' | translate}} <i class="fa fa-sort"></i>
         </th>
         <th>{{'EVENT' | translate}} </th>
       </tr>
-      <tr *ngFor="let item of orders | sort:sortBy">
+      <tr *ngFor="let item of orders | sort:sortBy | filter:searchText">
         <td class="hasLink"  [routerLink]="['/order',item.id]"> {{item.faktor}}</td>
         <td  [routerLink]="['/order',item.id]">{{item.customer}}</td>
         <td [routerLink]="['/order',item.id]">{{item.paymentMethod}}</td>
         <td>{{item.createDate}}</td>
         <td>{{item.finalChange}}</td>
         <td>{{item.statuse}}</td>
-        <td>{{item.total}}</td>
+        <td>{{item.total}} {{'TOMAN' | translate}}</td>
         <td>{{item.finalDate}}</td>
         <td class="eventsTd">
           <ul class="nav nav-pills">
             <li>
-              <a class="small-btn btn-edit" [routerLink]="['/order',selectedCheckbox]">
+              <a class="small-btn btn-edit" [routerLink]="['/order',item.id]">
                 <i class="fa fa-edit"></i>
               </a>
             </li>

@@ -1,42 +1,35 @@
-
-<!--<div class="login">-->
-<!--  <app-login></app-login>-->
-<!--</div>-->
-
-
-<!--......................-->
 <div id="wrapper" *ngIf="receivedChildMessage" dir="{{class}}" class="{{class}}">
   <nav class="header navbar navbar-inverse navbar-fixed-top col-xs-12" role="navigation" >
-<div class="col-6 rtlr ltrl">
+<div class="col-lg-6 col-md-3 col-sm-3 col-xs-1 rtlr ltrl">
   <button type="button" class="navbar-toggle d-lg-none d-sm-block rtlr ltrl" data-toggle="collapse" data-target=".navbar-collapse">
     <i class="fa fa-bars"></i>
   </button>
-  <div class="navbar-header rtlr ltrl">
+  <div class="navbar-header rtlr ltrl d-none d-sm-inline-block d-md-inline-block d-lg-inline-block">
     <a class="navbarBrand" href="index.html">{{'ADMIN_PANEL' | translate}}</a>
   </div>
 </div>
-    <div class="col-6 rtlr ltrl">
+    <div class="col-lg-6 col-md-9 col-sm-9 col-xs-11 rtlr ltrl">
     <ul class="nav nav-pills ">
-      <li class="select-box col-md-6 col-lg-6 col-sm-6">
-        <select name="lang" class="rtll ltrr mt-lg-2 border-0" ngModel="{{lng}}"  id="lang" (change)="langChange($event)">
+      <li class="select-box col-md-6 col-lg-6 col-sm-4 col-xs-3">
+        <select name="lang" class="rtll ltrr border-0 pt-2" ngModel="{{lng}}"  id="lang" (change)="langChange($event)">
           <option value="fa">{{'PERSIAN' | translate}}</option>
           <option value="en">{{'ENGLISH' | translate}}</option>
       </select>
-        <i class="fa fa-angle-down"></i>
+        <i class="fa fa-angle-down"> </i>
       </li>
-      <li class="dropdown  usernameP col-md-6 col-lg-6 col-sm-6">
+      <li class="dropdown  usernameP col-md-6 col-lg-6 col-sm-8 col-xs-9">
         <a class="dropdown-toggle username" data-toggle="dropdown" href="#">
-          <i class="fa fa-user fa-fw"></i> {{receivedChildMessage}} <b class="caret"></b>
+          <i class="fa fa-user fa-fw"></i> <span class="small-hide-user">{{receivedChildMessage}}</span> <b class="caret"></b>
         </a>
-        <ul class="dropdown-menu dropdown-user">
-          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-          </li>
-          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-          </li>
-          <li class="divider"></li>
-          <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-          </li>
-        </ul>
+<!--        <ul class="dropdown-menu dropdown-user">-->
+<!--          <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>-->
+<!--          </li>-->
+<!--          <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>-->
+<!--          </li>-->
+<!--          <li class="divider"></li>-->
+<!--          <li><a (click)="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>-->
+<!--          </li>-->
+<!--        </ul>-->
       </li>
     </ul>
     </div>
@@ -47,10 +40,10 @@
       <div class="sidebar-nav navbar-collapse">
         <ul class="nav pt-1" id="side-menu">
           <li>
-            <a routerLink="/" class="active"> <i class="fa fa-dashboard fa-fw"></i> <span class="hidesmall">{{'DASHBOARD' | translate}}</span> </a>
+            <a routerLink="/" class="dashboard active"> <i class="fa fa-dashboard fa-fw"></i> <span class="hidesmall">{{'DASHBOARD' | translate}}</span> </a>
           </li>
           <li>
-            <a routerLink="/category"><i class="fa fa-list-alt" aria-hidden="true"></i><span class="hidesmall"> {{'CATEGORES' | translate}}</span>
+            <a routerLink="/category" class="category"  ><i class="fa fa-list-alt" aria-hidden="true"></i><span class="hidesmall"> {{'CATEGORES' | translate}}</span>
             </a>
           </li>
           <li>
@@ -78,7 +71,7 @@
     </div>
 
 <!--  ................-->
-  <div id="page-wrapper" class="col-xs-12 col-lg-10 col-md-11 col-sm-12 p-lg-0 p-md-0 d-sm-flex d-flex">
+  <div  id="page-wrapper" class="col-xs-12 col-lg-10 col-md-11 col-sm-12 p-lg-0 p-md-0 d-sm-flex d-flex">
     <div class="container-fluid p-lg-0 p-md-0">
       <div class="admin-panel">
         <router-outlet></router-outlet>
@@ -89,5 +82,6 @@
 <div class="login-page" *ngIf="!receivedChildMessage">
   <app-login (messageToEmit)="getMessage($event)"></app-login>
 </div>
+
 
 

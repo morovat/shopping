@@ -17,6 +17,9 @@
 <!--          <span class="inline-txt d-none d-sm-inline-block d-md-inline-block pl-1"> حذف </span>-->
 <!--        </button></li>-->
       </ul>
+        <div class="search-hero col-6 col-xs-12 pb-2 pr-0 pl-0">
+          <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  {{'PLACEHOLDER_SEARCH_HEADING_TITLE' | translate}}">
+        </div>
     </div>
       <div class="table-responsive">
         <table class="table">
@@ -27,11 +30,12 @@
         <th (click)="sorting('number')">{{'COUNT' | translate}} <i class="fa fa-sort"></i></th>
         <th>{{'EVENT' | translate}}</th>
       </tr>
-      <tr *ngFor="let item of categories | sort:sortBy" >
+      <tr *ngFor="let item of categories | sort:sortBy | filter:searchText" >
         <td class="hasLink"  [routerLink]="['/cat',item.id]"><img class="small-png" *ngIf="item.photo" src="{{item.photo}}" alt=""><img *ngIf="!item.photo" class="small-png" src="../assets/images/default.jpg" alt=""></td>
         <td class="hasLink" [routerLink]="['/cat',item.id]">{{item.title}}</td>
         <td>{{item.des}}</td>
-        <td>{{item.number}} <span>عدد</span></td>
+        <td *ngIf="item.number">{{item.number}} <span>عدد</span></td>
+        <td *ngIf="!item.number">محصولی وجود ندارد.</td>
         <td class="eventsTd">
           <ul class="nav nav-pills">
           <li>

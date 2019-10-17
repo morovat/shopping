@@ -40,5 +40,7 @@
   "SAVE": "ثبت",
   "ORDER_LIST": "لیست سفارش",
   "EDIT_PRODUCT": " ویرایش محصول",
-  "ADD_NEW_PRODUCT": "افزودن محصول جدید"
+  "ADD_NEW_PRODUCT": "افزودن محصول جدید",
+  "PLACEHOLDER_SEARCH_HEADING_TITLE": "جستجو براساس همه فیلدها",
+  "PRODUCT": "محصول"
 }

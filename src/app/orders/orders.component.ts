@@ -12,6 +12,7 @@ selectedCheckbox;
   orders: OrdersModel[];
   loading=false;
   sortBy='';
+  searchText;
   constructor(private baseService: BaseService , private ordersService: OrdersService) {
     this.orders= [];
   }

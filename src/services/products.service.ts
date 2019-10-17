@@ -28,15 +28,16 @@ export class ProductsService {
     const checkRoleExistence = roleParam => this.products.some( ({id}) => id == roleParam);
     if(checkRoleExistence(f.value.id)){
       this.products.forEach((element, index) => {
-        if(element.date != f.value.date){
-        }
         if (element.id === parseInt(f.value.id)) {
+          f.value.date=moment(f.value.date).format('jYYYY-jMM-jDD');
           this.products[index] = f.value;
         };
       });
     }else {
+      f.value.date=moment(f.value.date).format('jYYYY-jMM-jDD');
       this.products.push(f.value);
     }
+    console.log(f.value.cat);
   }
   orderRemove(ido:number){
     this.products.forEach((element, index) => {

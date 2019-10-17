@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   products: ProductsModel[];
   loading=false;
   sortBy='';
+  searchText;
   constructor(private productsService:ProductsService) {
     this.products= [];
   }

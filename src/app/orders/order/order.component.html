@@ -2,14 +2,14 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
     <div class="col-xs-12 col-sm-12 col-md-12 titleHeader mb-3">
       <h2 class="pl-2 pt-4 page-wrapper" *ngIf="idf"> <i class="fa fa-edit"></i> {{'EDITE_ORDER' | translate}}</h2>
-      <h2 class="pl-2 pt-4 page-wrapper" *ngIf="!idf"> <i class="fa fa-plus"></i>{{'ADD_ORDER' | translate}}</h2>
+      <h2 class="pl-2 pt-4 page-wrapper" *ngIf="!idf"> <i class="fa fa-plus"></i> {{'ADD_ORDER' | translate}}</h2>
     </div>
     <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-5 singlePageProduct mb-4 d-flex">
-    <form class="mt-5" *ngFor="let item of orders | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <form class="mt-5" *ngFor="let item of orders | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate>
         <input type="hidden" ngModel="{{item.id}}" name="id" >
         <div class="wrap-input100 validate-input mt-4 col-md-3 col-sm-6 col-xs-6 col-lg-3 ">
           <label class="d-block">{{'INVOICE_NUMBER' | translate}}</label>
-          <input class="custombox input100"    id="faktor" type="text"  name="faktor" ngModel="{{item.faktor}}" placeholder="{{'INVOICE_NUMBER' | translate}}">
+          <input class="custombox input100"    id="faktor" type="text"  name="faktor" ngModel="{{item.faktor}}" #faktor="ngModel" [ngClass]="{ 'is-invalid': f.submitted && faktor.invalid }" required placeholder="{{'INVOICE_NUMBER' | translate}}">
         </div>
         <div class="wrap-input100 validate-input mt-4 col-md-3 col-sm-6 col-xs-6 col-lg-3 custombox-col6 left">
           <label class="d-block">{{'CUSTOMER' | translate}}</label>
@@ -17,22 +17,31 @@
         </div>
         <div class="mt-4 wrap-input100 col-md-3 col-sm-6 col-xs-6 col-lg-3 custombox-col6">
           <label class="d-block">{{'PAYMENT_METHOD' |translate}}</label>
-          <select class="custombox" name="paymentMethod" ngModel id="paymentMethod" ngModel="{{item.paymentMethod}}">
-            <option value="" disabled selected="" >{{'PAYMENT_METHOD' |translate}}</option>
-            <option value="زرین پال">زرین پال</option>
-            <option value="بانک تجارت">بانک تجارت</option>
-          </select>
+<!--          <select class="custombox" name="paymentMethod" ngModel id="paymentMethod" ngModel="{{item.paymentMethod}}">-->
+<!--            <option value="" disabled selected="" >{{'PAYMENT_METHOD' |translate}}</option>-->
+<!--            <option value="زرین پال">زرین پال</option>-->
+<!--            <option value="بانک تجارت">بانک تجارت</option>-->
+<!--          </select>-->
+          <ng-select2
+            [(ngModel)]="item.paymentMethod"
+            [data]="paymentM"
+            [placeholder]="'PAYMENT_METHOD' | translate"
+            [width]="220"
+            class="pro-select2-cat"
+            name="paymentMethod"
+          >
+          </ng-select2>
         </div>
         <div class="wrap-input100 mt-4 col-md-3 col-sm-6 col-xs-6 col-lg-3 custombox-col6 left">
           <label class="d-block">{{'DATE' |translate}}</label>
 
           <dp-date-picker
-            dir="rtl"
             mode="day"
             placeholder="{{'DATE' |translate}}"
             ngModel="{{item.createDate}}"
             name="createDate"
-            theme="dp-material" class="custombox">
+            theme="dp-material"
+            class="custombox">
           </dp-date-picker>
         </div>
         <div class="wrap-input100 mt-4 col-md-3 col-sm-6 col-xs-6 col-lg-3">
@@ -48,14 +57,23 @@
         </div>
         <div class="mt-4 wrap-input100 col-md-3 col-sm-6 col-xs-6 col-lg-3 custombox-col6">
           <label class="d-block">{{'STATUSE_ORDER' |translate}}</label>
-          <select name="statuse" ngModel="{{item.statuse}}" id="statuse" class="custombox">
-            <option value="" disabled selected="" >{{'STATUSE_ORDER' |translate}}</option>
-            <option value="ایجاد شده">ایجاد شده</option>
-            <option value="تایید شده">تایید شده</option>
-            <option value="لغو شده">لغو شده</option>
-            <option value="استرداد شده">استرداد شده</option>
-            <option value="ارسال شده">ارسال شده</option>
-          </select>
+<!--          <select name="statuse" ngModel="{{item.statuse}}" id="statuse" class="custombox">-->
+<!--            <option value="" disabled selected="" >{{'STATUSE_ORDER' |translate}}</option>-->
+<!--            <option value="ایجاد شده">ایجاد شده</option>-->
+<!--            <option value="تایید شده">تایید شده</option>-->
+<!--            <option value="لغو شده">لغو شده</option>-->
+<!--            <option value="استرداد شده">استرداد شده</option>-->
+<!--            <option value="ارسال شده">ارسال شده</option>-->
+<!--          </select>-->
+          <ng-select2
+            [(ngModel)]="item.statuse"
+            [data]="statuse"
+            [placeholder]="'STATUSE_ORDER' | translate"
+            [width]="220"
+            class="pro-select2-cat"
+            name="statuse"
+          >
+          </ng-select2>
         </div>
         <div class="wrap-input100 validate-input mt-4 col-md-3 col-sm-6 col-xs-6 col-lg-3 custombox-col6">
           <label class="d-block">{{'TOTAL_ORDERS' |translate}}</label>
@@ -72,7 +90,7 @@
             theme="dp-material" class="custombox">
           </dp-date-picker>
         </div>
-      <div class="d-lg-inline-block container-login100-form-btn mt-4 col-md-12 col-sm-12 col-xs-12 col-lg-12 d-flex">
+      <div class="d-lg-inline-block container-login100-form-btn mt-4 col-md-3 col-sm-3 col-xs-12 col-lg-3 d-flex">
         <button class="login100-form-btn mybtn btn-add custombox submitbtn mt-4">
           {{'SAVE' |translate}}
         </button>

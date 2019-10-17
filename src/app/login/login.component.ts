@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     if (f.value.email == this.email && f.value.pass == this.pass) {
       this.message = 'ایمیل , رمز عبور صحیح است.';
       this.messageToEmit.emit(f.value.email);
+      localStorage.setItem('login',f.value.email);
       this.loading=false;
     } else {
       this.message = 'ایمیل یا رمز عبور اشتباه است.';

@@ -14,6 +14,7 @@ export class CategoryComponent implements OnInit {
   categories : CategoryMode[] ;
   loading = false;
   sortBy='';
+  searchText;
   constructor(private baseService: BaseService , private categoryService:CategoryService) {
     this.categories=[];
   }

@@ -5,7 +5,7 @@
       <h2 class="pl-2 pt-4 page-wrapper" *ngIf="!idf"> <i class="fa fa-plus"></i> {{'ADD_NEW_PRODUCT' | translate}} </h2>
     </div>
     <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-5 singlePageProduct mb-4 d-flex">
-    <form class="w-100" *ngFor="let item of products | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <form class="w-100" *ngFor="let item of products | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate>
       <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 col-box ">
         <input type="hidden" ngModel="{{item.id}}" name="id" >
         <div class="img singlePageImg img-thumbnail m-xl-auto m-sm-auto">
@@ -20,20 +20,27 @@
         </div>
       </div>
       <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 col-box pr-xl-0">
-        <div class="wrap-input100 validate-input mt-4 col-md-6 col-sm-6 col-xs-6 col-lg-6 custombox-col6">
-          <input class="input100 custombox" ngModel="{{item.title}}" id="title"  type="text" name="title" placeholder="{{'TITLE' | translate}}">
+        <div class="wrap-input100 validate-input mt-4 col-md-6 col-sm-6 col-xs-6 col-lg-6 custombox-col6" data-validate="required">
+          <label>{{'TITLE' | translate}}</label>
+          <input class="input100 custombox"  [(ngModel)]="item.title" id="title"  type="text" name="title" placeholder="{{'TITLE' | translate}}" #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required>
+
+          <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+            <div *ngIf="title.errors.required">First Name is required</div>
+          </div>
         </div>
           <div class="wrap-input100 validate-input mt-4 col-lg-6 col-md-6 col-sm-6 col-xs-6 custombox-col6">
-            <input class="input100 custombox pull-left"  id="price" type="text" name="price" placeholder="{{'COUNT' | translate}}" ngModel="{{item.price}}">
+            <label>{{'PRICE' | translate}}</label>
+            <input class="input100 custombox pull-left"  id="price" type="text" name="price" placeholder="{{'PRICE' | translate}}"  [(ngModel)]="item.price">
           </div>
         <div class="mt-4 wrap-input100 col-md-6 col-sm-6 col-xs-6 col-lg-6 mb-4 custombox-col6">
+          <label>{{'CATEGORES' | translate}}</label>
           <ng-select2
             [(ngModel)]="item.cat"
             [data]="cat"
-            [placeholder]="'Please select a fruit...'"
+            [placeholder]="'CATEGORES' | translate"
             [width]="220"
-            [options]="cat"
             class="pro-select2-cat"
+            name="cat"
           >
           </ng-select2>
 <!--          <select class="custombox" name="cat" ngModel id="cat" ngModel="{{item.cat}}">-->
@@ -43,6 +50,7 @@
 <!--          </select>-->
         </div>
         <div class="wrap-input100 mt-4 col-md-6 col-sm-6 col-xs-6 col-lg-6 mb-4 pro-date-piker child-left custombox-col6 responsive-date">
+          <label>{{'DATE' | translate}}</label>
           <dp-date-picker
             dir="rtl"
             mode="day"
@@ -54,7 +62,7 @@
           </dp-date-picker>
         </div>
 
-      <div class="wrap-input100 validate-input mt-4 col-12 ">
+      <div class="wrap-input100 validate-input mt-4 col-12 d-flex">
         <textarea class="form-control" id="exampleFormControlTextarea4" id="des" name="des" rows="3" ngModel="{{item.des}}"></textarea>
       </div>
 <!--      <div class="form-group mt-4">-->

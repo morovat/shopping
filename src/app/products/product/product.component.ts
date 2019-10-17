@@ -25,11 +25,11 @@ export class ProductComponent implements OnInit {
     this.products= [];
     this.cat = [
       {
-        id: '1',
+        id: 'اسکرابر',
         text: 'اسکرابر'
       },
       {
-        id: '2',
+        id: 'واترجت',
         text: 'واترجت'
       },
     ];

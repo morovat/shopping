@@ -328,7 +328,7 @@ dp-date-picker.dp-material .dp-picker-input{
     width:100%;
   }
 }
-@media (max-width: 1400px) and (min-width: 768px){
+@media (max-width: 1500px) and (min-width: 768px){
   .tabelparent th,.tabelparent td{
     font-size: 14px;
   }
@@ -496,4 +496,46 @@ dp-date-picker.dp-material .dp-picker-input{
   .custombox-col6{
     width: 100% !important;
   }
+}
+
+@media(max-width: 600px){
+  .header .col-xs-1.rtlr.ltrl{
+    max-width: 10% !important;
+  }
+  .header .rtlr.ltrl.col-xs-11{
+    max-width:90% !important;
+}
+  .header .rtlr.ltrl .col-sm-4 {
+    max-width: 80% !important;
+  }
+  .header .rtlr.ltrl .col-sm-8 {
+    max-width: 20% !important;
+  }
+  .titleHeader h2{
+    font-size: 1.5rem;
+  }
+  .small-hide-user{
+    display:none;
+  }
+  .username .fa-user{
+   font-size:22px;
+  }
+  .dashboard > .col-xs-12{
+    margin-right:0px !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+}
+.is-invalid{
+  border:1px solid red;
+}
+.form-control::placeholder  {
+  font-family: FontAwesome;
+}
+.rtl .form-control::placeholder  {
+ float: left;
+}
+.ltr .form-control::placeholder  {
+  float: right;
 }

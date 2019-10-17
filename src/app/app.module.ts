@@ -24,6 +24,8 @@ import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { SortPipe } from './pip/sort.pipe';
 import { NgSelect2Module } from 'ng-select2';
+import {NgxLocalStorageModule} from 'ngx-localstorage';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 const routes: Routes = [
   // {    path: '', component: LoginComponent},
   {    path: '', component: DashboardComponent},
@@ -70,6 +72,8 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     DpDatePickerModule,
     NgSelect2Module,
+    Ng2SearchPipeModule,
+    NgxLocalStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

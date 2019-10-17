@@ -5,7 +5,7 @@
       <h2 class="pl-2 pt-4 page-wrapper" *ngIf="!idf"> <i class="fa fa-plus"></i> {{'ADD_CAT' | translate}}</h2>
     </div>
     <div class="tabelparent col-lg-10 col-md-10 col-sm-12 col-xs-12 pt-4 pb-5 singlePageProduct mb-4 d-flex">
-    <form *ngFor="let item of cats | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+    <form *ngFor="let item of cats | orderfilter:idf:'id'"  #f="ngForm" (ngSubmit)="f.form.valid && onSubmit(f)" novalidate>
       <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12 col-box ">
         <input type="hidden" ngModel="{{item.id}}" name="id" >
         <div class="img singlePageImg img-thumbnail m-xl-auto m-sm-auto">
@@ -21,16 +21,18 @@
       </div>
       <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 col-box pr-xl-0">
         <div class="wrap-input100 validate-input mt-4 col-md-6 col-sm-6 col-xs-6 custombox-col6">
-          <input class="input100 custombox" required ngModel="{{item.title}}" id="title"  type="text" name="title" placeholder=" {{'TITLE' | translate}}">
+          <label>{{'TITLE' | translate}}</label>
+          <input class="input100 custombox" required ngModel="{{item.title}}" id="title"  type="text" name="title" placeholder="{{'TITLE' | translate}}" #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required>
         </div>
         <div class="wrap-input100 validate-input mt-4 col-md-6 col-sm-6 col-xs-6 custombox-col6">
+          <label>{{'COUNT' | translate}} {{'PRODUCT' | translate}}</label>
           <input class="input100 custombox pull-left"  id="number" type="text" name="number" placeholder=" {{'COUNT' | translate}}" ngModel="{{item.number}}">
         </div>
         <div class="wrap-input100 validate-input mt-4 form-group col-md-12 col-sm-12 col-xs-12 d-flex">
           <textarea class="form-control rounded-0 txt-lg txt-sm txt-xs mt-4 d-inline" id="exampleFormControlTextarea4" id="des" name="des" rows="3" ngModel="{{item.des}}"></textarea>
         </div>
         <div class="wrap-input100 validate-input mt-4 col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <button class="login100-form-btn mybtn btn-add custombox pull-left submitbtn">
+          <button class="login100-form-btn mybtn btn-add custombox pull-left submitbtn col-6 col-xs-12">
             {{'SUBMIT' | translate}}
           </button>
         </div>
