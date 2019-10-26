@@ -23,6 +23,7 @@
 <!--            <option value="بانک تجارت">بانک تجارت</option>-->
 <!--          </select>-->
           <ng-select2
+            [allowClear]="true"
             [(ngModel)]="item.paymentMethod"
             [data]="paymentM"
             [placeholder]="'PAYMENT_METHOD' | translate"
@@ -66,6 +67,7 @@
 <!--            <option value="ارسال شده">ارسال شده</option>-->
 <!--          </select>-->
           <ng-select2
+            [allowClear]="true"
             [(ngModel)]="item.statuse"
             [data]="statuse"
             [placeholder]="'STATUSE_ORDER' | translate"

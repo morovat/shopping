@@ -26,6 +26,7 @@ import { SortPipe } from './pip/sort.pipe';
 import { NgSelect2Module } from 'ng-select2';
 import {NgxLocalStorageModule} from 'ngx-localstorage';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgDatepickerModule} from 'ng2-datepicker';
 const routes: Routes = [
   // {    path: '', component: LoginComponent},
   {    path: '', component: DashboardComponent},
@@ -80,7 +81,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    NgDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

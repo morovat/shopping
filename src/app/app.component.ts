@@ -67,4 +67,5 @@ export class AppComponent{
     $( '#side-menu' ).find( 'li .active' ).removeClass( 'active' );
     this.toggle != this.toggle;
   }
+
 }

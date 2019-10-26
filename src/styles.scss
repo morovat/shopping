@@ -539,3 +539,31 @@ dp-date-picker.dp-material .dp-picker-input{
 .ltr .form-control::placeholder  {
   float: right;
 }
+.order-yead li{
+  display: block;
+  border-bottom: 1px solid #dee2e6 ;
+  width: 100%;
+  padding-top: 10px;
+}
+.order-yead li:last-child{
+  border: none !important;
+}
+.tab-content .col-sm-8.border{
+ border-right: none !important;
+  min-height: 462px;
+}
+.Price-amount.amount{
+  font-size:17px;
+}
+.place-hodler{
+  color: #72777c;
+  opacity: 1;
+}
+.clearSearchHome{
+  position: absolute;
+  left: 0;
+  top: 8px;
+  margin-left: 8px;
+  color:#6c757d !important;
+  cursor: pointer;
+}

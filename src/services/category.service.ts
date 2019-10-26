@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {BaseService} from './base.service';
 import {NgForm} from '@angular/forms';
+import {CategoryMode} from '../model/category-mode';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class CategoryService {
     if(checkRoleExistence(f.value.id)){
       this.categories.forEach((element, index) => {
         if (element.id === parseInt(f.value.id)) {
-          this.categories[index] = f.value;
+          this.categories[index] = f.value;CategoryMode
         };
       });
     }else {

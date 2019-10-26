@@ -40,5 +40,13 @@
   "EDIT_PRODUCT": " Edite Product",
   "ADD_NEW_PRODUCT": "Add New Product",
   "PLACEHOLDER_SEARCH_HEADING_TITLE": "Search by all fields",
-  "PRODUCT": "Product"
+  "PRODUCT": "Product",
+  "YEAR": "Year",
+  "PREVIOUS_MONTH": "Previous month",
+  "CURRENT_MONTH": "Current month",
+  "LAST_WEEK": "Last week",
+  "FAVORITE_DATE": "Favorite date",
+  "ORDERS": "Orders",
+  "CUSTOMERS": "Customers",
+  "STORE": "Store"
 }

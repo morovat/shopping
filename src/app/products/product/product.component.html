@@ -35,6 +35,7 @@
         <div class="mt-4 wrap-input100 col-md-6 col-sm-6 col-xs-6 col-lg-6 mb-4 custombox-col6">
           <label>{{'CATEGORES' | translate}}</label>
           <ng-select2
+            [allowClear]="true"
             [(ngModel)]="item.cat"
             [data]="cat"
             [placeholder]="'CATEGORES' | translate"

@@ -38,4 +38,7 @@ export class CategoryComponent implements OnInit {
   sorting($event){
     this.sortBy=$event;
   }
+  clearSearch(){
+    this.searchText='';
+  }
 }

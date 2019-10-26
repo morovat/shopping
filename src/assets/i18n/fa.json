@@ -42,5 +42,14 @@
   "EDIT_PRODUCT": " ویرایش محصول",
   "ADD_NEW_PRODUCT": "افزودن محصول جدید",
   "PLACEHOLDER_SEARCH_HEADING_TITLE": "جستجو براساس همه فیلدها",
-  "PRODUCT": "محصول"
+  "PRODUCT": "محصول" ,
+  "REPORTS": "گزارشات",
+  "YEAR": "سال",
+  "PREVIOUS_MONTH": "ماه گذشته",
+  "CURRENT_MONTH": "این ماه",
+  "LAST_WEEK": "هفته گذشته",
+  "FAVORITE_DATE": "زمان دلخواه",
+  "ORDERS": "سفارشات",
+  "CUSTOMERS": "مشتریان",
+  "STORE": "انبار"
 }

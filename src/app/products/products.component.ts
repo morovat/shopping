@@ -36,4 +36,7 @@ export class ProductsComponent implements OnInit {
   sorting($event){
     this.sortBy=$event;
   }
+  clearSearch(){
+    this.searchText='';
+  }
 }

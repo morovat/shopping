@@ -34,4 +34,7 @@ selectedCheckbox;
   sorting($event){
     this.sortBy=$event;
   }
+  clearSearch(){
+    this.searchText='';
+  }
 }

@@ -18,6 +18,7 @@
         </ul>
         <div class="search-hero col-6 col-xs-12 pb-2 pr-0 pl-0">
           <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  {{'PLACEHOLDER_SEARCH_HEADING_TITLE' | translate}}">
+          <a class="clearSearchHome"  *ngIf="searchText" (click)="clearSearch()"><i class="fa fa-times"></i></a>
         </div>
       </div>
       <div class="table-responsive">

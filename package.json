@@ -29,6 +29,7 @@
     "jalali-moment": "^3.3.3",
     "jquery": "^3.4.1",
     "ng-select2": "^1.1.2",
+    "ng2-datepicker": "^3.1.1",
     "ng2-jalali-date-picker": "^2.2.7",
     "ng2-search-filter": "^0.5.1",
     "ngx-loading": "^8.0.0",
